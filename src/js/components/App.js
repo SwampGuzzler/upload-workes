@@ -1,8 +1,8 @@
 // @flow
 import MapView from 'js/components/MapView';
+import LeftPanel from 'js/components/LeftPanel/LeftPanel';
 import Header from 'js/components/Header';
 import React, {Component} from 'react';
-import {text} from 'js/config';
 
 export default class App extends Component {
 
@@ -12,8 +12,9 @@ export default class App extends Component {
   render () {
     return (
       <div className='root'>
-        <Header title={text.title} subtitle={text.subtitle} />
+        <Header />
         <MapView />
+        <LeftPanel />
       </div>
     );
   }

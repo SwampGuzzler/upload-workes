@@ -8,7 +8,7 @@ const zoomOutSvg = '<use xlink:href="#icon-zoom-out" />',
       locateSvg = '<use xlink:href="#icon-locate" />',
       shareSvg = '<use xlink:href="#icon-share" />';
 
-const animationOptions = { duration: 300 };
+const animationOptions = { duration: 3000 };
 
 type ControlsProps = {
   view: EsriView
