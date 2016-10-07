@@ -3,13 +3,22 @@ import {viewCreated, selectLanguage, selectTopic, toggleInitialModal, toggleLoca
 import {combineReducers} from 'redux';
 
 // This is my state model and each reducer maps to each store property
-export default combineReducers({
+// export default combineReducers({
+const appReducer = combineReducers({
   initialModalVisible: toggleInitialModal,
   locateModalVisible: toggleLocateModal,
   shareModalVisible: toggleShareModal,
   viewReady: viewCreated,
-  // resetApplication: resetApp,
   topic: selectTopic,
   language: selectLanguage,
   itemInfo: getItemInfo
 });
+
+const rootReducer = (state:State, action:Action) => {
+  if (action.type === 'RESET_APP') {
+    state = undefined; //passes in initialState by default!
+  }
+  return appReducer(state, action);
+};
+
+export default rootReducer;

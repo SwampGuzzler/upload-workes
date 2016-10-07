@@ -11,6 +11,5 @@ declare type AppState = {
   topic: string,
   itemInfo: Object,
   viewReady: bool,
-  resetApplication: string,
   language: string
 };
