@@ -5,3 +5,10 @@
 .share-modal {
   color: $error-red;
 }
+
+.initial-choice {
+  display: inline-block;
+  text-decoration: underline;
+  padding: 10px;
+  cursor: pointer;
+}

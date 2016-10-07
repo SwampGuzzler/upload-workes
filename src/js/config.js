@@ -1,14 +1,30 @@
 // @flow
 export const initialState:AppState = {
+  initialModalVisible: true,
   locateModalVisible: false,
   shareModalVisible: false,
+  topic: '',
   viewReady: false,
-  itemInfo: {}
+  itemInfo: {},
+  language: 'spanish'
 };
 
-export const text:{[key:string]: string} = {
-  title: 'Esri Redux Example',
-  subtitle: 'Example with Redux, React, Esri, Sass, and more.'
+export const headerText:{[key:string]: any} = {
+  title: {
+    english: 'WHO Malaria',
+    spanish: 'WHO MalarIa'
+  },
+  subtitle: {
+    english: 'Example with Malaria, Mosquitos, and more.',
+    spanish: 'Ejemplo con Malaria, Mosquitos, y mas.'
+  }
+};
+
+export const leftPanelText:{[key:string]: string} = {
+  title1: 'Left Panel1',
+  title2: 'Left Panel2',
+  title3: 'Left Panel3',
+  subtitle: 'Example with Malria, Mosquitos, and more.'
 };
 
 export const mapOptions:{[key:string]: any} = {

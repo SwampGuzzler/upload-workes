@@ -1,9 +1,36 @@
 // @flow
-import { VIEW_READY, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import {initialState} from 'js/config';
 
 export function viewCreated (state:State = initialState.viewReady, action:Action):State {
   return action.type !== VIEW_READY ? state : true;
+}
+
+export function resetApp (state:State = initialState, action:Action):State {
+  console.log(action.type !== RESET_APP);
+  console.log(initialState);
+  return action.type !== RESET_APP ? state : initialState;
+}
+
+export function toggleInitialModal (state:State = initialState.initialModalVisible, action:Action):State {
+  const {type, data} = action;
+  return type !== TOGGLE_INITIAL ? state : (
+    data.visible
+  );
+}
+
+export function selectTopic (state:State = initialState.topic, action:Action):State {
+  const {type, data} = action;
+  return type !== SELECT_TOPIC ? state : (
+    data.topic
+  );
+}
+
+export function selectLanguage (state:State = initialState.language, action:Action):State {
+  const {type, data} = action;
+  return type !== SELECT_LANGUAGE ? state : (
+    data.language
+  );
 }
 
 export function toggleShareModal (state:State = initialState.shareModalVisible, action:Action):State {
