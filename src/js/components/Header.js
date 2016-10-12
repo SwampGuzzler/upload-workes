@@ -24,7 +24,7 @@ export default class Header extends Component {
   };
 
   languageToggle:Function = (evt) => {
-    appStore.dispatch(selectLanguage({ language: evt.target.id }));
+    appStore.dispatch(selectLanguage({ language: evt.target.selectedOptions[0].id }));
   };
 
   render () {
