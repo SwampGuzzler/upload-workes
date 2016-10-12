@@ -24,18 +24,14 @@ export default class Header extends Component {
   };
 
   languageToggle:Function = (evt) => {
-    console.log(evt.target.id);
-
     appStore.dispatch(selectLanguage({ language: evt.target.id }));
-    console.log(this);
   };
 
   render () {
     const language = this.state.language ? this.state.language : 'english';
     const title = headerText.title[language];
     const subtitle = headerText.subtitle[language];
-    console.log(this.state);
-    console.log(language);
+
     return (
       <div className='app-header'>
         <h1 className='app-title'>{title}</h1>
