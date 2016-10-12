@@ -21,6 +21,7 @@ export const headerText:{[key:string]: any} = {
 };
 
 export const leftPanelText:{[key:string]: string} = {
+  reset: 'Reset App',
   title1: 'Left Panel1',
   title2: 'Left Panel2',
   title3: 'Left Panel3',

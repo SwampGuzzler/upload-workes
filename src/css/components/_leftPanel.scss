@@ -5,3 +5,14 @@
   background: aliceblue;
   height: calc(100% - 50px);
 }
+
+.panel-header {
+  background: gray;
+}
+
+.reset-app {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  margin: 0px;
+}

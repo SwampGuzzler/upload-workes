@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
+import PanelHeader from 'js/components/LeftPanel/PanelHeader';
 import {leftPanelText} from 'js/config';
-import {resetApp} from 'js/actions/mapActions';
 import appStore from 'js/appStore';
 
 export default class LeftPanel extends Component {
@@ -24,15 +24,10 @@ export default class LeftPanel extends Component {
     this.setState(appStore.getState());
   };
 
-  reset:Function = () => {
-    appStore.dispatch(resetApp({}));
-    //appStore.dispatch(toggleInitialModal({ visible: false }));
-  }
-
   render () {
     return (
       <div className='left-panel'>
-      <p onClick={this.reset}>{leftPanelText.title1}</p>
+        <PanelHeader topic={this.state.topic} />
 
         {this.state.topic === 'topic1' ? <p>{leftPanelText.title1}</p> : null}
         {this.state.topic === 'topic2' ? <p>{leftPanelText.title2}</p> : null}
