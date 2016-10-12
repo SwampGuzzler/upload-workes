@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import PanelHeader from 'js/components/LeftPanel/PanelHeader';
+import TopicOne from 'js/components/LeftPanel/TopicOne';
 import {leftPanelText} from 'js/config';
 import appStore from 'js/appStore';
 
@@ -29,7 +30,7 @@ export default class LeftPanel extends Component {
       <div className='left-panel'>
         <PanelHeader topic={this.state.topic} />
 
-        {this.state.topic === 'topic1' ? <p>{leftPanelText.title1}</p> : null}
+        {this.state.topic === 'topic1' ? <TopicOne /> : null}
         {this.state.topic === 'topic2' ? <p>{leftPanelText.title2}</p> : null}
         {this.state.topic === 'topic3' ? <p>{leftPanelText.title3}</p> : null}
       </div>

@@ -8,11 +8,21 @@
 
 .panel-header {
   background: gray;
+  height: 30px;
 }
 
 .reset-app {
   cursor: pointer;
   font-weight: bold;
-  padding: 5px;
+  padding: 0px;
   margin: 0px;
+}
+
+.topic-panel {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  height: calc(100% - 30px);
+  width: 100%;
+  background-color: orange;
 }
