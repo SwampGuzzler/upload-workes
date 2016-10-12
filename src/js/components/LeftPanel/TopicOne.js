@@ -4,13 +4,13 @@ import {leftPanelText} from 'js/config';
 import {resetApp} from 'js/actions/mapActions';
 import appStore from 'js/appStore';
 
-// export type HeaderProps = {
-//   topic: string
-// };
+export type TopicProps = {
+  language: string
+};
 
 export default class PanelHeader extends Component {
 
-  // props: HeaderProps;
+  props: TopicProps;
   displayName: 'PanelHeader';
 
   // reset:Function = () => {
@@ -20,7 +20,7 @@ export default class PanelHeader extends Component {
   render () {
     return (
       <div className='topic-panel'>
-        <p>{leftPanelText.title1}</p>
+        <p>{leftPanelText.title1[this.props.language]}</p>
       </div>
     );
   }

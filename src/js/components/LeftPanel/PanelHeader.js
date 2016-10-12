@@ -5,7 +5,8 @@ import {resetApp} from 'js/actions/mapActions';
 import appStore from 'js/appStore';
 
 export type HeaderProps = {
-  topic: string
+  topic: string,
+  language: string
 };
 
 export default class PanelHeader extends Component {
@@ -19,8 +20,8 @@ export default class PanelHeader extends Component {
 
   render () {
     return (
-      <div className='panel-header'>
-        <p className={`reset-app ${this.props.topic ? '' : 'hidden'}`} onClick={this.reset}>{leftPanelText.reset}</p>
+      <div className={`panel-header ${this.props.topic ? 'backgroundFill' : ''}`}>
+        <p className={`reset-app ${this.props.topic ? '' : 'hidden'}`} onClick={this.reset}>{leftPanelText.reset[this.props.language]}</p>
       </div>
     );
   }

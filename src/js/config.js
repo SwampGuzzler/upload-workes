@@ -21,8 +21,14 @@ export const headerText:{[key:string]: any} = {
 };
 
 export const leftPanelText:{[key:string]: string} = {
-  reset: 'Reset App',
-  title1: 'Left Panel1',
+  reset: {
+    english: 'Reset App',
+    spanish: 'App de Resetto'
+  },
+  title1: {
+    english: 'Left Panel1',
+    spanish: 'Panel de Lefto Uno'
+  },
   title2: 'Left Panel2',
   title3: 'Left Panel3',
   subtitle: 'Example with Malria, Mosquitos, and more.'

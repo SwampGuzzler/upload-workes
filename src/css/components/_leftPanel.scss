@@ -7,8 +7,8 @@
 }
 
 .panel-header {
-  background: gray;
-  height: 30px;
+  // background: gray;
+  // height: 30px;
 }
 
 .reset-app {
@@ -25,4 +25,9 @@
   height: calc(100% - 30px);
   width: 100%;
   background-color: orange;
+}
+
+.backgroundFill {
+  background: gray;
+  height: 30px;
 }

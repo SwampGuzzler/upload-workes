@@ -28,9 +28,9 @@ export default class LeftPanel extends Component {
   render () {
     return (
       <div className='left-panel'>
-        <PanelHeader topic={this.state.topic} />
+        <PanelHeader language={this.state.language} topic={this.state.topic} />
 
-        {this.state.topic === 'topic1' ? <TopicOne /> : null}
+        {this.state.topic === 'topic1' ? <TopicOne language={this.state.language} /> : null}
         {this.state.topic === 'topic2' ? <p>{leftPanelText.title2}</p> : null}
         {this.state.topic === 'topic3' ? <p>{leftPanelText.title3}</p> : null}
       </div>
