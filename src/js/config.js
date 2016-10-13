@@ -3,6 +3,7 @@ export const initialState:AppState = {
   initialModalVisible: true,
   locateModalVisible: false,
   shareModalVisible: false,
+  uploadModalVisible: false,
   topic: '',
   viewReady: false,
   itemInfo: {},
@@ -54,3 +55,33 @@ export const viewOptions:{[key:string]: any} = {
 export const urls = {
   itemInfo: (appid: string) => `//www.arcgis.com/sharing/rest/content/items/${appid}/data`
 };
+
+export const uploadConfig:{[key:string]: any} = {
+   portal: 'http://www.arcgis.com/sharing/rest/content/features/generate',
+   infoTemplate: {
+     content: '<table><tr><td>Name: </td><td>${featureName}</td></tr></table>' +
+       '<button>Subscribe</button>' +
+       '<button>Remove</button>'
+   },
+   shapefileParams: (name, spatialReference) => {  //, extentWidth, mapWidth)
+     return {
+       'name': name,
+       'generalize': true,
+       'targetSr': spatialReference,
+       'maxRecordCount': 1000,
+       'reducePrecision': true,
+       'numberOfDigitsAfterDecimal': 0,
+       'enforceInputFileSizeLimit': true,
+       'enforceOutputJsonSizeLimit': true,
+       'maxAllowableOffset': 1000 //extentWidth / mapWidth
+     };
+   },
+   shapefileContent: (params, filetype) => {
+     return {
+       'publishParameters': params,
+       'callback.html': 'textarea',
+       'filetype': filetype,
+       'f': 'json'
+     };
+   }
+ };

@@ -20,7 +20,9 @@ export default class PanelHeader extends Component {
   }
 
   toggle:Function = () => {
-    appStore.dispatch(togglePanel({panelMinimized: !this.props.panelMinimized}));
+    if (this.props.topic) {
+      appStore.dispatch(togglePanel({panelMinimized: !this.props.panelMinimized}));
+    }
   };
 
   render () {

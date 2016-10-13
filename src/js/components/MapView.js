@@ -4,6 +4,7 @@ import LocateModal from 'js/components/modals/Locate';
 import LeftPanel from 'js/components/LeftPanel/LeftPanel';
 import ShareModal from 'js/components/modals/Share';
 import InitialModal from 'js/components/modals/Initial';
+import UploadModal from 'js/components/modals/Upload';
 import Spinner from 'js/components/shared/Spinner';
 import {mapOptions, viewOptions} from 'js/config';
 import Controls from 'js/components/Controls';
@@ -48,7 +49,7 @@ export default class Map extends Component {
   };
 
   render () {
-    const {shareModalVisible, locateModalVisible, initialModalVisible} = this.state;
+    const {shareModalVisible, locateModalVisible, initialModalVisible, uploadModalVisible} = this.state;
 
     return (
       <div ref='mapView' className='map-view'>
@@ -58,6 +59,7 @@ export default class Map extends Component {
         <ShareModal visible={shareModalVisible} />
         <LocateModal visible={locateModalVisible} />
         <InitialModal visible={initialModalVisible} />
+        <UploadModal visible={uploadModalVisible} map={this.view.map} />
       </div>
     );
   }

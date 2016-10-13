@@ -1,5 +1,5 @@
 // @flow
-import { VIEW_READY, TOGGLE_PANEL, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_PANEL, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import {initialState} from 'js/config';
 
 export function viewCreated (state:State = initialState.viewReady, action:Action):State {
@@ -15,6 +15,13 @@ export function resetApp (state:State = initialState, action:Action):State {
 export function toggleInitialModal (state:State = initialState.initialModalVisible, action:Action):State {
   const {type, data} = action;
   return type !== TOGGLE_INITIAL ? state : (
+    data.visible
+  );
+}
+
+export function toggleUploadModal (state:State = initialState.uploadModalVisible, action:Action):State {
+  const {type, data} = action;
+  return type !== TOGGLE_UPLOAD ? state : (
     data.visible
   );
 }

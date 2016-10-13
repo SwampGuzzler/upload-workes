@@ -1,5 +1,5 @@
 // @flow
-import { VIEW_READY, TOGGLE_PANEL, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_PANEL, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import api from 'js/utils/api';
 
 // Types
@@ -38,6 +38,10 @@ export function togglePanel (data: panelSizeArgs): Action {
 
 export function toggleInitialModal (data: ModalActionArgs): Action {
   return { type: TOGGLE_INITIAL, data };
+}
+
+export function toggleUploadModal (data: ModalActionArgs): Action {
+  return { type: TOGGLE_UPLOAD, data };
 }
 
 export function toggleShareModal (data: ModalActionArgs): Action {

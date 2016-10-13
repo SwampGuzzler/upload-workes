@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import {selectLanguage} from 'js/actions/mapActions';
+import {selectLanguage, toggleUploadModal} from 'js/actions/mapActions';
 import appStore from 'js/appStore';
 import {headerText} from 'js/config';
 
@@ -27,6 +27,11 @@ export default class Header extends Component {
     appStore.dispatch(selectLanguage({ language: evt.target.selectedOptions[0].id }));
   };
 
+  upload:Function = () => {
+    appStore.dispatch(toggleUploadModal({ visible: true }));
+    // console.log(evt);
+  };
+
   render () {
     const language = this.state.language ? this.state.language : 'english';
     const title = headerText.title[language];
@@ -40,6 +45,7 @@ export default class Header extends Component {
           <option id='english' selected={language === 'english' ? 'selected' : ''}>English</option>
           <option id='spanish' selected={language === 'spanish' ? 'selected' : ''}>Espanol</option>
         </select>
+        <span className='upload-shapefile' onClick={this.upload}>Upload</span>
       </div>
     );
   }
