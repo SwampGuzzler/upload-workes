@@ -1,5 +1,5 @@
 // @flow
-import {toggleInitialModal, selectTopic} from 'js/actions/mapActions';
+import {toggleInitialModal, selectTopic, togglePanel} from 'js/actions/mapActions';
 import Wrapper from 'js/components/modals/Wrapper';
 import React, { Component } from 'react';
 import appStore from 'js/appStore';
@@ -17,6 +17,7 @@ export default class InitialModal extends Component {
   selectTopic:Function = (evt) => {
     this.close();
     appStore.dispatch(selectTopic({ topic: evt.target.id }));
+    appStore.dispatch(togglePanel({panelMinimized: false}));
   };
 
   render () {

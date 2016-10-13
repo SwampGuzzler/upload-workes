@@ -46,3 +46,16 @@
   background: gray;
   height: 30px;
 }
+
+.panel-toggle {
+  position: absolute;
+  left: 50px;
+  background-color: red;
+  line-height: 30px;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+  &.open {
+    left: 500px;
+  }
+}

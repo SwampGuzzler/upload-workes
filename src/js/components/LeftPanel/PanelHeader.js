@@ -20,13 +20,13 @@ export default class PanelHeader extends Component {
   }
 
   toggle:Function = () => {
-    appStore.dispatch(togglePanel());
+    appStore.dispatch(togglePanel({panelMinimized: !this.props.panelMinimized}));
   };
 
   render () {
     return (
       <div className={`panel-header ${this.props.topic ? 'backgroundFill' : ''}`}>
-        <div onClick={this.toggle} className='panel-toggle'>{this.props.panelMinimized ? '>' : '<'}</div>
+        <div onClick={this.toggle} className={`panel-toggle ${!this.props.panelMinimized ? 'open' : ''}`}>{this.props.panelMinimized ? '>' : '<'}</div>
         <p className={`reset-app ${this.props.topic ? '' : 'hidden'}`} onClick={this.reset}>{leftPanelText.reset[this.props.language]}</p>
       </div>
     );

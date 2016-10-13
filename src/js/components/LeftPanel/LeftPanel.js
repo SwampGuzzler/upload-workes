@@ -29,7 +29,7 @@ export default class LeftPanel extends Component {
 
   render () {
     return (
-      <div className={`left-panel ${this.state.topic ? 'expanded' : ''}`}>
+      <div className={`left-panel ${this.state.topic && this.state.panelMinimized === false ? 'expanded' : ''}`}>
         <PanelHeader panelMinimized={this.state.panelMinimized} language={this.state.language} topic={this.state.topic} />
 
         {this.state.topic === 'topic1' ? <TopicOne language={this.state.language} /> : null}

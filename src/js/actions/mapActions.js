@@ -12,6 +12,9 @@ type topicArgs = {
 type languageArgs = {
   language: string
 }
+type panelSizeArgs = {
+  panelMinimized: bool
+}
 
 export function viewCreated (): Action {
   return { type: VIEW_READY };
@@ -29,8 +32,8 @@ export function selectLanguage (data: languageArgs): Action {
   return { type: SELECT_LANGUAGE, data };
 }
 
-export function togglePanel (): Action {
-  return { type: TOGGLE_PANEL };
+export function togglePanel (data: panelSizeArgs): Action {
+  return { type: TOGGLE_PANEL, data };
 }
 
 export function toggleInitialModal (data: ModalActionArgs): Action {
