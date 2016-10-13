@@ -1,14 +1,29 @@
 .left-panel {
   position: absolute;
-  top: 50px;
-  width: 25%;
+  top: 10px;
+  width: 50px;
   background: aliceblue;
-  height: calc(100% - 50px);
+  height: calc(100% - 35px);
+}
+
+.expanded {
+  width: 500px;
 }
 
 .panel-header {
-  // background: gray;
-  // height: 30px;
+  width: 100%;
+}
+
+.header-icons {
+  margin-top: 10px;
+}
+
+.panel-icon {
+  display: block;
+  line-height: 50px;
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .reset-app {

@@ -8,15 +8,15 @@ export type TopicProps = {
   language: string
 };
 
-export default class TopicOne extends Component {
+export default class TopicTwo extends Component {
 
   props: TopicProps;
-  displayName: 'TopicOne';
+  displayName: 'TopicTwo';
 
   render () {
     return (
       <div className='topic-panel'>
-        <p>{leftPanelText.title1[this.props.language]}</p>
+        <p>{leftPanelText.title2[this.props.language]}</p>
       </div>
     );
   }

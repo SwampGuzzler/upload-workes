@@ -2,6 +2,8 @@
 import React, {Component} from 'react';
 import PanelHeader from 'js/components/LeftPanel/PanelHeader';
 import TopicOne from 'js/components/LeftPanel/TopicOne';
+import TopicTwo from 'js/components/LeftPanel/TopicTwo';
+import TopicThree from 'js/components/LeftPanel/TopicThree';
 import {leftPanelText} from 'js/config';
 import appStore from 'js/appStore';
 
@@ -27,12 +29,13 @@ export default class LeftPanel extends Component {
 
   render () {
     return (
-      <div className='left-panel'>
-        <PanelHeader language={this.state.language} topic={this.state.topic} />
+      <div className={`left-panel ${this.state.topic ? 'expanded' : ''}`}>
+        <PanelHeader panelMinimized={this.state.panelMinimized} language={this.state.language} topic={this.state.topic} />
 
         {this.state.topic === 'topic1' ? <TopicOne language={this.state.language} /> : null}
-        {this.state.topic === 'topic2' ? <p>{leftPanelText.title2}</p> : null}
-        {this.state.topic === 'topic3' ? <p>{leftPanelText.title3}</p> : null}
+        {this.state.topic === 'topic2' ? <TopicTwo language={this.state.language} /> : null}
+        {this.state.topic === 'topic3' ? <TopicThree language={this.state.language} /> : null}
+
       </div>
     );
   }

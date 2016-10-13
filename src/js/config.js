@@ -6,7 +6,8 @@ export const initialState:AppState = {
   topic: '',
   viewReady: false,
   itemInfo: {},
-  language: 'spanish'
+  language: 'spanish',
+  panelMinimized: true
 };
 
 export const headerText:{[key:string]: any} = {
@@ -29,8 +30,14 @@ export const leftPanelText:{[key:string]: string} = {
     english: 'Left Panel1',
     spanish: 'Panel de Lefto Uno'
   },
-  title2: 'Left Panel2',
-  title3: 'Left Panel3',
+  title2: {
+    english: 'Left Panel2',
+    spanish: 'Panel de Lefto Dos'
+  },
+  title3: {
+    english: 'Left Panel3',
+    spanish: 'Panel de Lefto Trece'
+  },
   subtitle: 'Example with Malria, Mosquitos, and more.'
 };
 

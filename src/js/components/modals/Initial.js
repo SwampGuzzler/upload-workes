@@ -25,9 +25,9 @@ export default class InitialModal extends Component {
     return (
       <Wrapper theme='initial-modal' visible={visible} close={this.close}>
         <h3>Init Something</h3>
-        <span id='topic1'onClick={this.selectTopic} className='initial-choice'>View1</span>
-        <span id='topic2'onClick={this.selectTopic} className='initial-choice'>View2</span>
-        <span id='topic3'onClick={this.selectTopic} className='initial-choice'>View3</span>
+        <span id='topic1' onClick={this.selectTopic} className='initial-choice'>View1</span>
+        <span id='topic2' onClick={this.selectTopic} className='initial-choice'>View2</span>
+        <span id='topic3' onClick={this.selectTopic} className='initial-choice'>View3</span>
       </Wrapper>
     );
   }

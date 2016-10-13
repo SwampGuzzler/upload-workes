@@ -1,6 +1,7 @@
 // @flow
 import {viewCreated, getItemInfo} from 'js/actions/mapActions';
 import LocateModal from 'js/components/modals/Locate';
+import LeftPanel from 'js/components/LeftPanel/LeftPanel';
 import ShareModal from 'js/components/modals/Share';
 import InitialModal from 'js/components/modals/Initial';
 import Spinner from 'js/components/shared/Spinner';
@@ -51,6 +52,7 @@ export default class Map extends Component {
 
     return (
       <div ref='mapView' className='map-view'>
+        <LeftPanel />
         <Controls view={this.view} />
         <Spinner active={!this.view.ready} />
         <ShareModal visible={shareModalVisible} />

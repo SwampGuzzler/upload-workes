@@ -1,5 +1,5 @@
 // @flow
-import { VIEW_READY, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_PANEL, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import api from 'js/utils/api';
 
 // Types
@@ -29,7 +29,11 @@ export function selectLanguage (data: languageArgs): Action {
   return { type: SELECT_LANGUAGE, data };
 }
 
-export function toggleInitialModal (data: ModalActionArgs): Action {
+export function toggleInitialModal (): Action {
+  return { type: TOGGLE_PANEL };
+}
+
+export function togglePanel (data: ModalActionArgs): Action {
   return { type: TOGGLE_INITIAL, data };
 }
 

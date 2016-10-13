@@ -1,5 +1,5 @@
 // @flow
-import {viewCreated, selectLanguage, selectTopic, toggleInitialModal, toggleLocateModal, toggleShareModal, getItemInfo} from 'js/reducers/mapReducers';
+import {viewCreated, panelMinimized, selectLanguage, selectTopic, toggleInitialModal, toggleLocateModal, toggleShareModal, getItemInfo} from 'js/reducers/mapReducers';
 import {combineReducers} from 'redux';
 
 // This is my state model and each reducer maps to each store property
@@ -11,7 +11,8 @@ const appReducer = combineReducers({
   viewReady: viewCreated,
   topic: selectTopic,
   language: selectLanguage,
-  itemInfo: getItemInfo
+  itemInfo: getItemInfo,
+  togglePanel: panelMinimized
 });
 
 const rootReducer = (state:State, action:Action) => {
