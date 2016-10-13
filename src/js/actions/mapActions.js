@@ -29,11 +29,11 @@ export function selectLanguage (data: languageArgs): Action {
   return { type: SELECT_LANGUAGE, data };
 }
 
-export function toggleInitialModal (): Action {
+export function togglePanel (): Action {
   return { type: TOGGLE_PANEL };
 }
 
-export function togglePanel (data: ModalActionArgs): Action {
+export function toggleInitialModal (data: ModalActionArgs): Action {
   return { type: TOGGLE_INITIAL, data };
 }
 

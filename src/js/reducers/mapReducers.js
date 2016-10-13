@@ -36,7 +36,7 @@ export function selectLanguage (state:State = initialState.language, action:Acti
 export function togglePanel (state:State = initialState.panelMinimized, action:Action):State {
   const {type, data} = action;
   return type !== TOGGLE_PANEL ? state : (
-    data.language
+    data.panelMinimized
   );
 }
 
