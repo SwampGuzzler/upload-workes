@@ -1,0 +1,73 @@
+.app-loader,
+.app-loader.active {
+  background: rgba(220,220,220,0.75);
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  left: 0;
+  top: 0;
+}
+
+.app-loader.active {
+  display: block;
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transition-timing-function: linear;
+}
+
+.app-loader.active .foreground {
+  animation: loader 0.95s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
+.app-loader .spinner {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  left: 50%;
+  top: 50%;
+}
+
+
+@-moz-keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

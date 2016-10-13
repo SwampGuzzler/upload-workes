@@ -1,0 +1,20 @@
+.analysis-instructions.upload-container {
+  border: 1px dashed grey;
+  position: relative;
+  text-align: center;
+  margin: 15px 15px;
+  font-size: 20px;
+  padding: 10px;
+  cursor: copy;
+  height: 50px;
+  width: 100px;
+}
+
+.analysis-instructions.upload-container.active {
+  font-weight: bold;
+  background: red;
+}
+
+.analysis-instructions.upload-container input {
+  display: none;
+}
