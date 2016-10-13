@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import {selectLanguage, toggleUploadModal} from 'js/actions/mapActions';
+import {selectLanguage, toggleUploadModal, toggleBasemapSelector} from 'js/actions/mapActions';
 import appStore from 'js/appStore';
 import {headerText} from 'js/config';
 import Select from 'react-select';
@@ -26,6 +26,11 @@ export default class Header extends Component {
 
   upload:Function = () => {
     appStore.dispatch(toggleUploadModal({ visible: true }));
+    // console.log(evt);
+  };
+
+  toggleBasemapSelector:Function = () => {
+    appStore.dispatch(toggleBasemapSelector({ basemapSelector: !this.state.basemapSelectorVisible }));
     // console.log(evt);
   };
 
@@ -58,6 +63,7 @@ export default class Header extends Component {
             onChange={this.languageToggle}
           />
         </div>
+        <span className='basemap-selector' onClick={this.toggleBasemapSelector}>Basemap</span>
         <span className='upload-shapefile' onClick={this.upload}>Upload</span>
       </div>
     );

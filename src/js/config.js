@@ -8,7 +8,8 @@ export const initialState:AppState = {
   viewReady: false,
   itemInfo: {},
   language: 'spanish',
-  panelMinimized: true
+  panelMinimized: true,
+  basemapSelectorVisible: false
 };
 
 export const headerText:{[key:string]: any} = {

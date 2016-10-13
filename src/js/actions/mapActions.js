@@ -1,5 +1,5 @@
 // @flow
-import { VIEW_READY, TOGGLE_PANEL, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_PANEL, TOGGLE_BASEMAP, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import api from 'js/utils/api';
 
 // Types
@@ -14,6 +14,9 @@ type languageArgs = {
 }
 type panelSizeArgs = {
   panelMinimized: bool
+}
+type basemapSelectArgs = {
+  basemapSelector: bool
 }
 
 export function viewCreated (): Action {
@@ -42,6 +45,10 @@ export function toggleInitialModal (data: ModalActionArgs): Action {
 
 export function toggleUploadModal (data: ModalActionArgs): Action {
   return { type: TOGGLE_UPLOAD, data };
+}
+
+export function toggleBasemapSelector (data: basemapSelectArgs): Action {
+  return { type: TOGGLE_BASEMAP, data };
 }
 
 export function toggleShareModal (data: ModalActionArgs): Action {
