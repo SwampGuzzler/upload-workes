@@ -21,6 +21,7 @@
 
 .app-title {
   font-size: 24px;
+  padding: 10px;
 }
 
 .app-subtitle {
@@ -30,7 +31,10 @@
 
 .language-selector {
   display: inline-block;
-  width: 100px;
+  width: 150px;
+  position: absolute;
+  left: 15em;
+  top: 0;
 }
 
 .upload-shapefile {

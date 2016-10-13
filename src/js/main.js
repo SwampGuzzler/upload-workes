@@ -7,6 +7,7 @@ import React from 'react';
 //- For production, config/inline-style.js will inline this into html via html-webpack-plugin
 import 'css/critical.scss';
 import 'css/app.scss';
+import 'react-select/dist/react-select.css';
 
 //- Lazy load esri css
 loadCSS('//js.arcgis.com/4.1/esri/css/main.css');
