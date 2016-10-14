@@ -9,7 +9,8 @@ export const initialState:AppState = {
   itemInfo: {},
   language: 'spanish',
   panelMinimized: true,
-  basemapSelectorVisible: false
+  basemapSelectorVisible: false,
+  selectBasemapOption: ''
 };
 
 export const headerText:{[key:string]: any} = {

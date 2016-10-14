@@ -1,0 +1,21 @@
+.basemap-selection {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  padding: 10px;
+  cursor: pointer;
+  background-size: cover;
+  margin: 8px;
+}
+
+#street {
+  background-image: url('./images/dark-gray-basemap.png');
+}
+
+#satellite {
+  background-image: url('./images/imagery-basemap.jpg');
+}
+
+#topo {
+  background-image: url('./images/topo-basemap.jpg');
+}

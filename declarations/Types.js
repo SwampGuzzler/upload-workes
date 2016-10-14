@@ -12,5 +12,6 @@ declare type AppState = {
   topic: string,
   itemInfo: Object,
   viewReady: bool,
-  language: string
+  language: string,
+  basemapOption: string
 };

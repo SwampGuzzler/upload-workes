@@ -1,5 +1,5 @@
 // @flow
-import { VIEW_READY, TOGGLE_PANEL, TOGGLE_BASEMAP, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_PANEL, SELECT_BASEMAP, TOGGLE_BASEMAP, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import {initialState} from 'js/config';
 
 export function viewCreated (state:State = initialState.viewReady, action:Action):State {
@@ -37,6 +37,13 @@ export function selectTopic (state:State = initialState.topic, action:Action):St
   const {type, data} = action;
   return type !== SELECT_TOPIC ? state : (
     data.topic
+  );
+}
+
+export function selectNewBasemap (state:State = initialState.selectBasemapOption, action:Action):State {
+  const {type, data} = action;
+  return type !== SELECT_BASEMAP ? state : (
+    data.basemapOption
   );
 }
 

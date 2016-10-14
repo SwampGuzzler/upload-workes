@@ -5,16 +5,17 @@ import LeftPanel from 'js/components/LeftPanel/LeftPanel';
 import ShareModal from 'js/components/modals/Share';
 import InitialModal from 'js/components/modals/Initial';
 import UploadModal from 'js/components/modals/Upload';
+import Basemap from 'js/components/modals/Basemap';
 import Spinner from 'js/components/shared/Spinner';
 import {mapOptions, viewOptions} from 'js/config';
 import Controls from 'js/components/Controls';
 import React, {Component} from 'react';
 import appStore from 'js/appStore';
 import MapView from 'esri/views/MapView';
-import BasemapToggle from 'esri/widgets/BasemapToggle';
+// import BasemapToggle from 'esri/widgets/BasemapToggle';
 import EsriMap from 'esri/Map';
 
-let toggle;
+// let toggle;
 
 export default class Map extends Component {
 
@@ -41,31 +42,31 @@ export default class Map extends Component {
       appStore.dispatch(viewCreated());
       //- Webmap from https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html
       appStore.dispatch(getItemInfo('e691172598f04ea8881cd2a4adaa45ba'));
-      toggle = new BasemapToggle({
-        // 2 - Set properties
-        view: view, // view that provides access to the map's 'topo' basemap
-        nextBasemap: 'hybrid' // allows for toggling to the 'hybrid' basemap
-      });
-      // 3 - Call startup on the widget
-      toggle.startup();
-
-      // Add the BasemapToggle widget to the top right corner of the view
-      view.ui.add(toggle, 'top-right');
-      toggle.visible = this.state.basemapSelectorVisible;
-
-      toggle.on('toggle', () => {
-        appStore.dispatch(toggleBasemapSelector({ basemapSelector: false }));
-        // setTimeout( () => {
-        //   this.view.map.basemap = 'streets';
-        // }, 2000);
-      });
+      // toggle = new BasemapToggle({
+      //   // 2 - Set properties
+      //   view: view, // view that provides access to the map's 'topo' basemap
+      //   nextBasemap: 'hybrid' // allows for toggling to the 'hybrid' basemap
+      // });
+      // // 3 - Call startup on the widget
+      // toggle.startup();
+      //
+      // // Add the BasemapToggle widget to the top right corner of the view
+      // view.ui.add(toggle, 'top-right');
+      // toggle.visible = this.state.basemapSelectorVisible;
+      //
+      // toggle.on('toggle', () => {
+      //   appStore.dispatch(toggleBasemapSelector({ basemapSelector: false }));
+      //   // setTimeout( () => {
+      //   //   this.view.map.basemap = 'streets';
+      //   // }, 2000);
+      // });
 
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.basemapSelectorVisible !== this.state.basemapSelectorVisible) {
-      toggle.visible = this.state.basemapSelectorVisible;
+    if (prevState.selectBasemapOption !== this.state.selectBasemapOption) {
+      this.view.map.basemap = this.state.selectBasemapOption;
     }
 
   }
@@ -79,7 +80,7 @@ export default class Map extends Component {
   };
 
   render () {
-    const {shareModalVisible, locateModalVisible, initialModalVisible, uploadModalVisible} = this.state;
+    const {shareModalVisible, locateModalVisible, initialModalVisible, uploadModalVisible, basemapSelectorVisible} = this.state;
 
     return (
       <div ref='mapView' className='map-view'>
@@ -89,6 +90,7 @@ export default class Map extends Component {
         <ShareModal visible={shareModalVisible} />
         <LocateModal visible={locateModalVisible} />
         <InitialModal visible={initialModalVisible} />
+        <Basemap visible={basemapSelectorVisible} />
         <UploadModal visible={uploadModalVisible} map={this.view.map} />
       </div>
     );

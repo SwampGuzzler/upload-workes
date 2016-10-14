@@ -1,5 +1,5 @@
 // @flow
-import { VIEW_READY, TOGGLE_PANEL, TOGGLE_BASEMAP, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_PANEL, SELECT_BASEMAP, TOGGLE_BASEMAP, TOGGLE_UPLOAD, SELECT_LANGUAGE, RESET_APP, SELECT_TOPIC, TOGGLE_INITIAL, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import api from 'js/utils/api';
 
 // Types
@@ -18,6 +18,9 @@ type panelSizeArgs = {
 type basemapSelectArgs = {
   basemapSelector: bool
 }
+type basemapOptionArgs = {
+  basemapOption: string
+}
 
 export function viewCreated (): Action {
   return { type: VIEW_READY };
@@ -29,6 +32,10 @@ export function resetApp (): Action {
 
 export function selectTopic (data: topicArgs): Action {
   return { type: SELECT_TOPIC, data };
+}
+
+export function selectNewBasemap (data: basemapOptionArgs): Action {
+  return { type: SELECT_BASEMAP, data };
 }
 
 export function selectLanguage (data: languageArgs): Action {
