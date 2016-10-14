@@ -80,7 +80,7 @@ export default class Map extends Component {
   };
 
   render () {
-    const {shareModalVisible, locateModalVisible, initialModalVisible, uploadModalVisible, basemapSelectorVisible} = this.state;
+    const {shareModalVisible, selectBasemapOption, locateModalVisible, initialModalVisible, uploadModalVisible, basemapSelectorVisible} = this.state;
 
     return (
       <div ref='mapView' className='map-view'>
@@ -90,7 +90,7 @@ export default class Map extends Component {
         <ShareModal visible={shareModalVisible} />
         <LocateModal visible={locateModalVisible} />
         <InitialModal visible={initialModalVisible} />
-        <Basemap visible={basemapSelectorVisible} />
+        <Basemap activeBasemap={selectBasemapOption} visible={basemapSelectorVisible} />
         <UploadModal visible={uploadModalVisible} map={this.view.map} />
       </div>
     );
