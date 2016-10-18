@@ -13,18 +13,18 @@ import type {ModalProps} from './Types';
 import shp from 'js/libs/shp';
 import cw from 'catiline';
 
+//// require.config({
+//     baseUrl: this.base
+// });
 
 const worker = cw({
+
     init: function(scope) {
-      debugger
-        // importScripts('jam/require.js');
-        // require.config({
-        //     baseUrl: this.base
-        // });
-        // require(['shp'], function(shp) {
-        scope.shp = shp;
-        console.log(scope);
-        // });
+      importScripts('js/libs/require.js');
+
+      require(['js/libs/shp'], function(SHP) {
+        scope.shp = SHP;
+      });
     },
     data: function(data, cb, scope) {
       console.log(data);
@@ -42,11 +42,6 @@ const worker = cw({
         });
 
     },
-    color: function(s){
-      //from http://stackoverflow.com/a/15710692
-      importScripts('js/colorbrewer.js');
-      return colorbrewer.Spectral[11][Math.abs(JSON.stringify(s).split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)) % 11];
-    },
     makeString: function(buffer) {
       var array = new Uint8Array(buffer);
       var len = array.length;
@@ -59,7 +54,6 @@ const worker = cw({
     },
     json: function(data, cb, scope) {
       console.log('worker json');
-      // importScripts('js/topojson.v1.min.js');
       var name = data[1];
       //console.log(name);
       var json = data.length === 2 ? JSON.parse(scope.makeString(data[0])) : data[0];
@@ -81,16 +75,6 @@ const worker = cw({
     base: cw.makeUrl('.')
 });
 
-worker.on('json', function(e) {
-    console.log(e);
-    debugger
-    // lc.addOverlay(L.geoJson(e[0], options).addTo(m), e[1]);
-});
-
-worker.on('error', function(e) {
-    console.warn(e);
-});
-
 const TYPE = {
   ZIP: 'application/zip',
   JSON: 'application/json',
@@ -103,16 +87,29 @@ export default class UploadModal extends Component {
   props: ModalProps;
 
   constructor (props) {
-   super(props);
-   this.state = {
-     dndActive: false,
-     isUploading: false,
-     fieldSelectionShown: false,
-     showFields: false,
-     fields: [],
-     graphics: []
-   };
- }
+    super(props);
+    this.state = {
+      dndActive: false,
+      isUploading: false,
+      fieldSelectionShown: false,
+      showFields: false,
+      fields: [],
+      graphics: []
+    };
+    this.setWorkerEvents();
+  }
+
+  setWorkerEvents = () => {
+    worker.on('json', function(e) {
+        console.log(e);
+        debugger
+        // lc.addOverlay(L.geoJson(e[0], options).addTo(m), e[1]);
+    });
+
+    worker.on('error', function(e) {
+        console.warn(e);
+    });
+  }
 
   close:Function = () => {
     appStore.dispatch(toggleUploadModal({ visible: false }));
@@ -167,6 +164,10 @@ export default class UploadModal extends Component {
         this.handleZipFile(inputFile);
     } else {
       var reader = new FileReader();
+      reader.onerror = function (event) {
+        console.error('File could not be read! Code ' + event.target.error.code);
+      };
+      console.log('inputFile', inputFile);
       reader.onload = function() {
           let ext;
           if (reader.readyState !== 2 || reader.error) {
@@ -176,8 +177,32 @@ export default class UploadModal extends Component {
               ext = inputFile.name.split('.');
               ext = ext[ext.length - 1];
 
-              console.log(worker.json);
-              worker.json([reader.result, inputFile.name.slice(0, (0 - (ext.length + 1)))], [reader.result]);
+              var data = reader.result;
+              console.log('data', data);
+
+              const worker2 = cw(function(base, cb){
+                  console.log(shp);
+                  importScripts(shp);
+                  shp(base).then(cb);
+              });
+              console.log('worker2', worker2);
+              //worker2 can be called multiple times
+              worker2.data(data).then(function(data2){
+                //do stuff with data
+                console.log('data2', data2);
+              });
+
+              // shp.parseShp(data).then(function(geojson){
+              //   console.log(geojson);
+              //     //do something with your geojson
+              // }).catch(function(onErrFn) {
+              //   console.log(onErrFn);
+              //   debugger
+              // });
+
+
+              // console.log(worker.json);
+              // worker.json([reader.result, inputFile.name.slice(0, (0 - (ext.length + 1)))], [reader.result]);
           }
       };
       reader.readAsArrayBuffer(inputFile);
@@ -186,63 +211,55 @@ export default class UploadModal extends Component {
     // shp(path).then(function(geojson){
     //   console.log(geojson);
     //     //do something with your geojson
+    // }).catch(function(onErrFn) {
+    //   console.log(onErrFn);
+    //   debugger
     // });
 
-    // this.getData(path)
-    //   .then(this.createGraphics) // then send it to the createGraphics() method
-    //   .then(this.createLayer) // when graphics are created, create the layer
-    //   .otherwise(this.errback);
   };
 
   handleZipFile = (file) => {
-    const reader = new FileReader();
-    console.log(file);
-    console.log(reader);
-    // debugger
+
+    var reader = new FileReader();
     // reader.onload = this.readerLoad;
-    reader.onload = function () {
-        const data = reader.result;
-        console.log(data);
-        // const array = new Int8Array(data);
-        // output.value = JSON.stringify(array, null, '  ');
-        // window.setTimeout(ReadFile, 1000);
-    };
-    // reader.onload = () => {
-    //   var data = reader.result;
-    //   console.log('data', data);
-    //   // var array = new Int8Array(data);
-    //   // console.log('array', array);
-    //   // const value = JSON.stringify(array, null, '  ');
-    //   // console.log('value', value);
-    //   // this.readerLoad(data);
-    //   worker.data(data, [data]);
+
+    // reader.onload = function () {
+    //     const data = reader.result;
+    //     console.log(data);
+    //     // const array = new Int8Array(data);
+    //     // output.value = JSON.stringify(array, null, '  ');
+    //     // window.setTimeout(ReadFile, 1000);
     // };
+    reader.onload = () => {
+      var data = reader.result;
+      this.readerLoad(data);
+      // worker.data(data, [data]);
+    };
 
     reader.readAsArrayBuffer(file);
-    //I think I need reader.result!
   }
 
   readerLoad = (data) => {
     console.log(data);
-    console.log(arguments);
+    console.log(shp);
 
     // shp(data).then(function(geoJson){
     //   console.log(geoJson);
     //   debugger
-      // if(Array.isArray(geoJson)){
-      //     geoJson.forEach(function(geo){
-      //         scope.json([geo, geo.fileName, true],true,scope);
-      //     });
-      // } else {
-      //     scope.json([geoJson, geoJson.fileName, true],true,scope);
-      // }
+    //   if(Array.isArray(geoJson)){
+    //       geoJson.forEach(function(geo){
+    //           scope.json([geo, geo.fileName, true],true,scope);
+    //       });
+    //   } else {
+    //       scope.json([geoJson, geoJson.fileName, true],true,scope);
+    //   }
     // });
 
     // if (this.readyState !== 2 || this.error) {
     //     return;
     // } else {
     // worker.json([reader.result, file.name.slice(0, (0 - (ext.length + 1)))], [reader.result]);
-    worker.data(this.result, [this.result]);
+    // worker.data(data, [data]);
     // }
   }
 
